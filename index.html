@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn deeply with AI - A protocol that makes AI ask you questions instead of just explaining">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Deep Learn">
+    
+    <title>Learn Deeply with AI</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header h1 {
+            color: #e94560;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .header .subtitle {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .header .tagline {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+        
+        /* Cards */
+        .card {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .card-title {
+            color: #e94560;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        /* Steps */
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            background: #e94560;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+        
+        .step-content h3 {
+            color: #ffffff;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+        
+        .step-content p {
+            color: #a0a0a0;
+            font-size: 13px;
+        }
+        
+        /* Stuck items */
+        .stuck-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        
+        .stuck-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stuck-emoji {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+        
+        .stuck-text {
+            flex: 1;
+        }
+        
+        .stuck-text .say {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .stuck-text .result {
+            color: #a0a0a0;
+            font-size: 12px;
+        }
+        
+        /* For/Not For */
+        .for-not-for {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .for-box, .not-for-box {
+            flex: 1;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .for-box {
+            background: linear-gradient(135deg, #1e4a3d 0%, #0f3460 100%);
+        }
+        
+        .not-for-box {
+            background: linear-gradient(135deg, #4a1e1e 0%, #0f3460 100%);
+        }
+        
+        .for-box h3 {
+            color: #4ade80;
+            margin-bottom: 10px;
+        }
+        
+        .not-for-box h3 {
+            color: #f87171;
+            margin-bottom: 10px;
+        }
+        
+        .for-box p, .not-for-box p {
+            color: #ffffff;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        
+        .for-box .time, .not-for-box .time {
+            color: #a0a0a0;
+            font-size: 11px;
+        }
+        
+        /* Prompt Section */
+        .prompt-section {
+            background: #0a0a1a;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .prompt-header h3 {
+            color: #e94560;
+            font-size: 16px;
+        }
+        
+        .copy-btn {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #ff6b6b;
+            transform: scale(1.05);
+        }
+        
+        .copy-btn.copied {
+            background: #4ade80;
+        }
+        
+        .prompt-text {
+            background: #1a1a2e;
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #a0a0a0;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .prompt-text::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .prompt-text::-webkit-scrollbar-track {
+            background: #0f3460;
+            border-radius: 4px;
+        }
+        
+        .prompt-text::-webkit-scrollbar-thumb {
+            background: #e94560;
+            border-radius: 4px;
+        }
+        
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            padding: 25px;
+            background: #e94560;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .cta-section .small {
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+        }
+        
+        /* Example Topics */
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .topic-tag {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #a0a0a0;
+            font-size: 12px;
+        }
+        
+        .footer a {
+            color: #e94560;
+            text-decoration: none;
+        }
+        
+        /* Install Banner */
+        .install-banner {
+            display: none;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .install-banner.show {
+            display: block;
+        }
+        
+        .install-banner p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .install-btn {
+            background: white;
+            color: #e94560;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 10px;
+            color: #a0a0a0;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: #e94560;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 400px) {
+            .for-not-for {
+                flex-direction: column;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Install Banner -->
+        <div class="install-banner" id="installBanner">
+            <p>📱 Install this app for quick access</p>
+            <button class="install-btn" id="installBtn">Install App</button>
+        </div>
+        
+        <!-- Header -->
+        <div class="header">
+            <h1>LEARN DEEPLY</h1>
+            <p class="subtitle">with AI</p>
+            <p class="tagline">AI asks → You answer → You understand</p>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('learn')">How It Works</button>
+            <button class="tab" onclick="showTab('prompt')">Get Prompt</button>
+        </div>
+        
+        <!-- Learn Tab -->
+        <div class="tab-content active" id="learn">
+            
+            <!-- 3 Steps -->
+            <div class="card">
+                <h2 class="card-title">3 STEPS</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Copy the prompt</h3>
+                        <p>Go to "Get Prompt" tab</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Paste in ChatGPT or Claude</h3>
+                        <p>Any AI works</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Say what you want to learn</h3>
+                        <p>"I want to learn [your topic]"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- When Stuck -->
+            <div class="card">
+                <h2 class="card-title">WHEN STUCK, SAY:</h2>
+                
+                <div class="stuck-item">
+                    <span class="stuck-emoji">😕</span>
+                    <div class="stuck-text">
+                        <div class="say">"I don't know"</div>
+                        <div class="result">→ AI makes it simpler</div>
+                    </div>
+                </div>
+                
+                <div class="stuck-item">
+                    <span class="stuck-emoji">🔄</span>
+                    <div class="stuck-text">
+                        <div class="say">"Ask differently"</div>
+                        <div class="result">→ AI tries new way</div>
+                    </div>
+                </div>
+                
+                <div class="stuck-item">
+                    <span class="stuck-emoji">😴</span>
+                    <div class="stuck-text">
+                        <div class="say">"I'm tired"</div>
+                        <div class="result">→ Stop or easier mode</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- For / Not For -->
+            <div class="for-not-for">
+                <div class="for-box">
+                    <h3>✓ FOR</h3>
+                    <p>Deep understanding</p>
+                    <p>Real learning</p>
+                    <p class="time">30 min+</p>
+                </div>
+                <div class="not-for-box">
+                    <h3>✗ NOT FOR</h3>
+                    <p>Quick answers</p>
+                    <p>Exam cramming</p>
+                    <p class="time">No time</p>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>TRY IT: 20-30 MINUTES</h2>
+                <p>Any topic you want to learn</p>
+                <p class="small">Go to "Get Prompt" tab to start</p>
+                
+                <div class="topics">
+                    <span class="topic-tag">Python</span>
+                    <span class="topic-tag">Writing</span>
+                    <span class="topic-tag">Math</span>
+                    <span class="topic-tag">Languages</span>
+                    <span class="topic-tag">Anything</span>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Prompt Tab -->
+        <div class="tab-content" id="prompt">
+            
+            <div class="prompt-section">
+                <div class="prompt-header">
+                    <h3>📋 THE PROMPT</h3>
+                    <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">Copy</button>
+                </div>
+                <div class="prompt-text" id="promptText">You are my learning partner. Follow these rules strictly.
+
+=== CORE RULE ===
+You ASK questions. I ANSWER. 
+You do NOT explain until I show what I know first.
+
+=== START ===
+When I tell you what I want to learn, ask me:
+
+1. "What do you already know about this? (Even a little is fine. Zero is also okay.)"
+2. "Why do you want to learn this? What will you DO with it?"
+3. "Energy level? (1=tired, 5=sharp)"
+4. "How much time do you have?"
+
+Then begin teaching through QUESTIONS, not explanations.
+
+=== HOW TO TEACH ME ===
+
+Step 1: Connect to what I know
+- Find something I already understand
+- Link new concept to that
+
+Step 2: Ask, don't tell
+- Ask me questions
+- Let me figure things out
+- Only explain AFTER I try
+
+Step 3: Make me prove understanding
+- Don't accept "I understand"
+- Ask me to explain in MY words
+- Ask me to apply to a NEW example
+
+Step 4: When I'm stuck
+- Don't give the answer immediately
+- Give a hint or smaller question
+- If I say "I don't know" → make the question simpler
+
+Step 5: When I'm really stuck
+- It's okay to give a small explanation
+- Then immediately ask me to explain it back
+- Check if I really got it
+
+=== WHAT I CAN SAY ===
+
+I will tell you:
+- "I don't know" → Make question simpler
+- "I'm confused" → Try different approach
+- "Ask differently" → Rephrase your question
+- "I'm tired" → Make it easier or stop
+- "I understand" → You must verify by asking me to prove it
+
+=== DETECTING MY UNDERSTANDING ===
+
+SHALLOW (push deeper):
+- I use vague words
+- I repeat your words back
+- I can't give an example
+
+DEEP (can continue):
+- I explain in my own words
+- I give my own example
+- I can apply to something new
+
+=== SESSION END ===
+
+Before ending, ask me:
+1. "Explain what you learned in your own words"
+2. "What's still unclear?"
+3. "Confidence 1-10?"
+
+=== START NOW ===
+Wait for me to tell you what I want to learn.</div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">AFTER PASTING, SAY:</h2>
+                <p style="text-align: center; color: #ffffff; font-size: 16px; margin-bottom: 15px;">
+                    "I want to learn <span style="color: #e94560;">[YOUR TOPIC]</span>"
+                </p>
+                <p style="text-align: center; color: #a0a0a0; font-size: 13px;">
+                    Be specific. Not "Python" but "how to read files in Python"
+                </p>
+            </div>
+            
+            <div class="cta-section">
+                <h2>NOW GO TRY IT!</h2>
+                <p>Open ChatGPT or Claude</p>
+                <p>Paste the prompt</p>
+                <p class="small">Then say what you want to learn</p>
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Made for deep learners</p>
+            <p><a href="https://github.com/yourusername/ai-assisted-thinking" target="_blank">View on GitHub</a></p>
+        </div>
+        
+    </div>
+    
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Copy prompt
+        function copyPrompt() {
+            const promptText = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+        
+        // PWA Install
+        let deferredPrompt;
+        const installBanner = document.getElementById('installBanner');
+        const installBtn = document.getElementById('installBtn');
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBanner.classList.add('show');
+        });
+        
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                installBanner.classList.remove('show');
+            }
+        });
+        
+        window.addEventListener('appinstalled', () => {
+            installBanner.classList.remove('show');
+        });
+        
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('SW registered'))
+                    .catch(err => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
