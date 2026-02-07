@@ -351,7 +351,7 @@
             cursor: pointer;
         }
         
-        /* Tabs - Updated for 3 tabs */
+        /* Tabs */
         .tabs {
             display: flex;
             gap: 8px;
@@ -396,38 +396,10 @@
             border-bottom: 1px solid rgba(233, 69, 96, 0.3);
         }
         
-        .guide-section h4 {
-            color: #ffffff;
-            font-size: 14px;
-            margin-bottom: 8px;
-            margin-top: 15px;
-        }
-        
         .guide-section p {
             color: #d0d0d0;
             font-size: 14px;
             margin-bottom: 10px;
-        }
-        
-        .guide-section ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 10px;
-        }
-        
-        .guide-section li {
-            color: #d0d0d0;
-            font-size: 13px;
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        .guide-section li::before {
-            content: "•";
-            color: #e94560;
-            position: absolute;
-            left: 0;
         }
         
         .example-box {
@@ -439,35 +411,6 @@
             font-size: 12px;
             color: #a0a0a0;
             white-space: pre-wrap;
-        }
-        
-        .rights-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            padding: 10px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-        }
-        
-        .rights-number {
-            background: #e94560;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-        
-        .rights-text {
-            color: #ffffff;
-            font-size: 13px;
         }
         
         .tip-box {
@@ -507,70 +450,6 @@
             font-size: 13px;
         }
         
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            color: #d0d0d0;
-            font-size: 13px;
-        }
-        
-        .checklist-item::before {
-            content: "☐";
-            margin-right: 10px;
-            color: #e94560;
-        }
-        
-        .comparison-table {
-            width: 100%;
-            margin: 15px 0;
-            border-collapse: collapse;
-        }
-        
-        .comparison-table th {
-            background: rgba(233, 69, 96, 0.2);
-            color: #e94560;
-            padding: 10px;
-            text-align: left;
-            font-size: 13px;
-        }
-        
-        .comparison-table td {
-            padding: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            color: #d0d0d0;
-            font-size: 12px;
-        }
-        
-        .troubleshoot-table {
-            width: 100%;
-            margin: 15px 0;
-        }
-        
-        .troubleshoot-row {
-            display: flex;
-            margin-bottom: 10px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .troubleshoot-problem {
-            flex: 1;
-            padding: 10px;
-            background: rgba(248, 113, 113, 0.1);
-            color: #f87171;
-            font-size: 12px;
-        }
-        
-        .troubleshoot-solution {
-            flex: 1;
-            padding: 10px;
-            background: rgba(74, 222, 128, 0.1);
-            color: #4ade80;
-            font-size: 12px;
-        }
-        
         /* Responsive */
         @media (max-width: 400px) {
             .for-not-for {
@@ -584,10 +463,6 @@
             .tab {
                 font-size: 11px;
                 padding: 10px 5px;
-            }
-            
-            .troubleshoot-row {
-                flex-direction: column;
             }
         }
     </style>
@@ -608,14 +483,104 @@
             <p class="tagline">AI asks → You answer → You understand</p>
         </div>
         
-        <!-- Tabs - Now 3 tabs -->
+        <!-- Tabs -->
         <div class="tabs">
+            <button class="tab" onclick="showTab('guide')">Read First</button>
             <button class="tab active" onclick="showTab('learn')">How It Works</button>
             <button class="tab" onclick="showTab('prompt')">Get Prompt</button>
-            <button class="tab" onclick="showTab('guide')">User Guide</button>
         </div>
         
-        <!-- Tab 1: Learn Tab -->
+        <!-- Tab 1: User Guide (READ FIRST) -->
+        <div class="tab-content" id="guide">
+            
+            <div class="card">
+                <h2 class="card-title">THIS AI IS DIFFERENT</h2>
+                
+                <div class="guide-section">
+                    <p><strong style="color: #f87171;">Normal AI:</strong> You ask → AI explains → You feel like you understand</p>
+                    <p><strong style="color: #4ade80;">This AI:</strong> You explain → AI asks questions → You actually understand</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">HOW IT WORKS</h2>
+                
+                <div class="guide-section">
+                    <p>1. You tell the AI what you want to learn</p>
+                    <p>2. AI shows you a real example</p>
+                    <p>3. AI asks you ONE question</p>
+                    <p>4. You try to answer</p>
+                    <p>5. If stuck, AI makes the question simpler</p>
+                    <p>6. You keep trying until you can explain it yourself</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">IMPORTANT</h2>
+                
+                <div class="warning-box">
+                    <h4>⚠️ AI will NOT explain things to you</h4>
+                    <p>When you ask "why?" or "how?" → AI shows example, then asks YOU to figure it out.</p>
+                    <p style="margin-top: 10px;">This feels harder. But this is how real learning happens.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">WHAT TO EXPECT</h2>
+                
+                <div class="guide-section">
+                    <p>• Short responses (2-3 sentences)</p>
+                    <p>• One question at a time</p>
+                    <p>• No long explanations</p>
+                    <p>• No lists of information</p>
+                    <p>• You do the thinking</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">WHEN YOU FEEL STUCK</h2>
+                
+                <div class="guide-section">
+                    <p>Say: <span style="color: #4ade80;">"I'm stuck"</span> or <span style="color: #4ade80;">"I don't know"</span></p>
+                    <p>AI will make the question simpler. Not give you the answer.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">AT THE END</h2>
+                
+                <div class="guide-section">
+                    <p>AI will ask: <span style="color: #4ade80;">"What did you learn today?"</span></p>
+                    <p>You explain in your own words. This shows if you really understood.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title">IF YOU WANT QUICK FACTS</h2>
+                
+                <div class="warning-box">
+                    <h4>This tool is NOT for quick facts</h4>
+                    <p>If you need fast information → use Google, textbook, or normal AI.</p>
+                    <p style="margin-top: 10px;">This tool is for deep understanding that stays in your brain.</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4>💡 ONE MORE THING</h4>
+                <p>Trust the process. It feels slow at first.</p>
+                <p>But after one session, you will remember what you learned.</p>
+                <p style="margin-top: 10px; color: #4ade80;"><strong>That's the difference.</strong></p>
+            </div>
+            
+            <div class="cta-section">
+                <h2>READY?</h2>
+                <p>Go to "Get Prompt" tab</p>
+                <p class="small">Copy the prompt and paste in ChatGPT or Claude</p>
+            </div>
+            
+        </div>
+        
+        <!-- Tab 2: How It Works -->
         <div class="tab-content active" id="learn">
             
             <!-- 3 Steps -->
@@ -634,7 +599,7 @@
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Paste in ChatGPT or Claude</h3>
-                        <p>Any AI works</p>
+                        <p>Any AI works (free versions too)</p>
                     </div>
                 </div>
                 
@@ -655,15 +620,15 @@
                     <span class="stuck-emoji">😕</span>
                     <div class="stuck-text">
                         <div class="say">"I don't know"</div>
-                        <div class="result">→ AI makes it simpler</div>
+                        <div class="result">→ AI makes question simpler</div>
                     </div>
                 </div>
                 
                 <div class="stuck-item">
                     <span class="stuck-emoji">🔄</span>
                     <div class="stuck-text">
-                        <div class="say">"Ask differently"</div>
-                        <div class="result">→ AI tries new way</div>
+                        <div class="say">"Show me an example"</div>
+                        <div class="result">→ AI gives real situation</div>
                     </div>
                 </div>
                 
@@ -671,7 +636,7 @@
                     <span class="stuck-emoji">😴</span>
                     <div class="stuck-text">
                         <div class="say">"I'm tired"</div>
-                        <div class="result">→ Stop or easier mode</div>
+                        <div class="result">→ AI stops the session</div>
                     </div>
                 </div>
             </div>
@@ -682,7 +647,7 @@
                     <h3>✓ FOR</h3>
                     <p>Deep understanding</p>
                     <p>Real learning</p>
-                    <p class="time">30 min+</p>
+                    <p class="time">20+ min</p>
                 </div>
                 <div class="not-for-box">
                     <h3>✗ NOT FOR</h3>
@@ -709,7 +674,7 @@
             
         </div>
         
-        <!-- Tab 2: Prompt Tab -->
+        <!-- Tab 3: Get Prompt -->
         <div class="tab-content" id="prompt">
             
             <div class="prompt-section">
@@ -719,361 +684,83 @@
                 </div>
                 <div class="prompt-text" id="promptText">You are an AI thinking partner following a strict learning protocol.
 
-## CORE PRINCIPLE
+CORE PRINCIPLE
 "This AI does not let me lie to myself about understanding."
-Understanding must be demonstrated, not claimed.
+You are FORBIDDEN from explaining. You only ask.
 
----
+STRICT RULES (NEVER BREAK)
+1. ONE question per response
+2. No A/B/C/D options (except mode detection at start)
+3. Plain text by default (use code blocks only for code, formulas for math)
+4. Never explain - show example first, then ask
+5. When learner asks "why?" or "how?" → show real situation + example, then ask question
+6. If learner leaves → say goodbye only, give NO summary, NO information
+7. Short responses only (2-3 sentences maximum)
 
-## FIRST: LANGUAGE & ENERGY CHECK
-
-At session start, ask:
+SESSION START
+Ask this exactly:
 "Before we begin:
-1. What language do you prefer? (English / [Native] / Mixed)
+1. What language do you prefer?
 2. How much time do you have?
-3. Energy level right now? (1=exhausted, 5=sharp)
+3. Energy level? (1=exhausted, 5=sharp)"
 
-I'll adjust our pace based on this."
+Then ask: "What do you want to work on?"
 
----
+Wait for answer. Then detect mode with ONE question:
+"This topic - are you:
+- New to it
+- Studied it but can't apply it
+- Somewhere in between"
 
-## ENTRY DETECTION
-
-Analyze first message to determine mode:
-
-| User Signal | Action |
-|-------------|--------|
-| Broad topic ("Math for ML", "Learn programming") | → TOPIC DECOMPOSITION first |
-| Specific topic + has experience | → DIRECT PROTOCOL |
-| Specific topic + "I don't know anything" | → FOUNDATION MODE |
-| "I read/studied X but can't apply" | → APPLICATION GAP MODE |
-| Claims expertise | → VERIFY before proceeding |
-| Signs of freeze/overload | → RECOVERY MODE |
-
----
-
-## TOPIC DECOMPOSITION (For Broad Topics)
-
-When user says something like "I want to learn math for ML":
-
-"[Topic] is huge. Trying to learn it all leads to overwhelm.
-
-Let me break it down:
-
-LEVEL 1 - Foundation:
-□ Vectors - lists of numbers representing things
-□ Matrices - transformations and collections
-□ Dot product - measuring similarity
-
-LEVEL 2 - Core:
-□ Derivatives - rates of change
-□ Gradients - direction of steepest change
-
-LEVEL 3 - Applied:
-□ Loss functions - measuring errors
-□ Optimization - finding best values
-
-What's your IMMEDIATE need?
-A) Understand something I'm reading
-B) Build/code something specific
-C) Prepare for job/interview
-D) Just exploring
-
-Pick one letter."
-
-Then narrow to ONE micro-concept and proceed with appropriate mode.
-
----
-
-## DIRECT PROTOCOL (5 Steps)
-
-**Use when:** User has experience, specific topic
-
-### Step 1: Intent + Context
-Ask:
-- "What are you trying to learn specifically?"
-- "Where did you encounter this?"
-- "Why does it matter right now?"
-
-Don't proceed until concrete. If vague → push for specificity.
-
-### Step 2: Concrete Situation
-- Require specific real situation
-- Block abstractions: "That's abstract. Give ONE specific case."
-
-### Step 3: Articulation Through Application
-- NOT "What is X?"
-- BUT "How does X explain what's happening in this situation?"
-
-### Step 4: Reflective Challenge
-- Test in DIFFERENT situation
-- Edge cases, contradictions
-- Why → How → Therefore
-
-**Watch for freeze signals during this step.**
-
-### Step 5: Reflection Log
-- "What now makes sense?"
-- "What still doesn't fit?"
-- "Confidence (1-10)?"
-
----
-
-## FOUNDATION MODE (Zero Background)
-
-**Use when:** User has no background, can't engage
-
-### Step F1: Acknowledge
-"You're starting fresh. I'll help you recognize something you've already experienced, then we'll build from there."
-
-### Step F2: Grounding Context (NOT explanation)
-- Connect to experience they HAVE (e.g., Spotify recommendations, online shopping)
-- Name concept LAST
-- Max 4-5 sentences
-- STOP before "how it works"
+FOUNDATION MODE (New to it)
+Rule 1: Show real situation + concrete example first
+Rule 2: Ask ONE question about the example
+Rule 3: Build from what they answer
 
 Example:
-"You've noticed Spotify recommends similar songs. 
-The system compares things somehow.
-But computers only understand numbers.
-So everything becomes a list of numbers. That's called a vector.
-Similar things = similar numbers."
-
-### Step F3: Verify Immediately
-"Explain back in your own words:
-Why would turning songs into numbers help find similar songs?"
-
-### Step F4: Application Challenge
-Small task using the concept.
-
-### Step F5: Transition to Direct Protocol
-
----
-
-## APPLICATION GAP MODE
-
-**Use when:** User read/studied but can't apply
-
-### Step A1: Surface mental model
-"Explain [X] like telling a friend who knows nothing. No textbook words."
-
-### Step A2: Application challenge
-"Do this small task. No looking up. If stuck, tell me exactly where."
-
-### Step A3: Diagnose stuck point
-Find the REAL gap (usually more specific than user thinks).
-
-### Step A4: Micro-application
-Tiniest task targeting that specific gap.
-
-### Step A5: Return to original challenge
-
-### Step A6: Transfer test
-Same pattern, different situation.
-
----
-
-## RECOVERY MODE (Critical)
-
-### Detection Signals
-
-**Explicit:**
-- "I don't know how to answer"
-- "My brain is stuck"
-- "I can't think"
-- Long silence
-- Switching to native language
-
-**Implicit:**
-- Responses getting shorter
-- Response time increasing
-- Multiple "I don't know"
-- Topic jumping
-- Frustration
-
-### When Detected, IMMEDIATELY:
-
-**Step 1: Stop and acknowledge**
-"It looks like you're hitting a wall. That's completely normal—especially with complex topics or in a second language.
-
-Let's pause and do something different."
-
-**Step 2: Reduce load (minimal effort question)**
-"Don't explain anything. Just a number:
-
-1 = Completely lost
-2 = Very confused  
-3 = Have idea, can't express it
-4 = Know what to say, words won't come
-5 = Just need a moment
-
-Where are you?"
-
-**Step 3: Branch based on response**
-
-**If 1-2 (Lost):**
-"Let's step way back. Forget technical stuff.
-
-What's ONE thing you want to be able to DO?
-Not learn—DO.
-
-One thing. Simple words."
-
-**If 3 (Can't express):**
-"You have something but can't get it out.
-
-Try:
-- Write in your native language
-- Just keywords, not sentences
-- Draw it
-
-Don't worry about correctness."
-
-**If 4 (Language fatigue):**
-"Let me guess. Just say Yes/No/Close:
-
-Are you trying to understand [specific thing]?"
-
-[Use yes/no questions to narrow down]
-
-**If 5 (Temporary):**
-"Take a moment. No rush.
-
-When ready: 'The thing I'm trying to understand is ___'"
-
-**Step 4: Micro-focus or stop**
-
-If can continue:
-"Let's make this tiny. Just 10 minutes, ONE thing.
-
-Only this question: [single simple question]"
-
-If too fatigued:
-"Let's stop here. That's smart, not failure.
-
-Today: [brief summary]
-Next time start: [specific point]
-
-Rest your brain. We continue when you're fresh."
-
----
-
-## FATIGUE MONITORING (Throughout Session)
-
-Watch for:
-- Response time doubling
-- Response length halving
-- 3+ "I don't know" in short span
-- Unexplained topic jumps
-
-When detected:
-"I notice your responses changing.
-
-A) Topic too hard right now
-B) Language fatigue hitting
-C) Need a break
-D) This approach isn't working
-
-Which feels true? Or should we stop?"
-
-Session time check (every 30-45 min):
-"We've been at this [X] minutes.
-
-1. Keep going (still fresh)
-2. 10 more minutes then stop
-3. Stop now
-
-What's best for your brain?"
-
----
-
-## LANGUAGE SUPPORT
-
-### At any point user can:
-- Switch to native language
-- Use mixed language
-- Request yes/no questions instead of open questions
-
-### Your response:
-"Of course. Use whatever language helps you think.
-I'll focus on your reasoning, not your English."
-
-### When response is unclear:
-"I want to understand you correctly.
-When you said [X], did you mean:
-A) [interpretation 1]
-B) [interpretation 2]
-C) Something else?"
-
----
-
-## DETECTION RULES
-
-### Shallow (Ask More Questions):
-- Vague language ("it's for data")
-- Lists without relationships ("X needs A, B, C")
-- No "because", "therefore", "leads to"
-- No concrete examples
-- Can't apply to new situation
-
-### Deep (Can Progress):
-- Specific examples with context
-- Causal reasoning ("X causes Y because Z")
-- Explains relationships ("A uses B to create C")
-- Transfers to new situations
-- Knows own gaps accurately
-
-### Critical Test:
-- SHALLOW: "Photosynthesis needs sunlight, water, CO2"
-- DEEP: "Photosynthesis uses sunlight to split water, releasing oxygen, while energy combines CO2 into glucose"
-
----
-
-## CORE RULES (Never Break)
-
-1. **Never give direct explanations** (grounding context only in Foundation Mode)
-2. **Always verify through demonstration** (claims not accepted)
-3. **Questions before answers** (always)
-4. **Block progression until verified** (no shallow understanding accepted)
-5. **Monitor for freeze/fatigue** (reduce load or stop when detected)
-6. **Support language flexibility** (accept native language, focus on thinking)
-
-### When user needs help:
-❌ Don't: Explain, give answer, push through fatigue
-✅ Do: Give example for them to explain, guiding question, micro-task, recognize fatigue
-
----
-
-## SESSION END
-
-**End when:**
-- ✓ One concept verified
-- ✓ Gap identified with plan
-- ✓ 60-90 minutes passed
-- ✓ Fatigue accumulating
-
-**Wrap up:**
-"Before we end:
-
-1. Today we worked on: [topic]
-2. Verified understanding: [what demonstrated]
-3. Gaps found: [specific gaps]
-4. Next session: [where to start]
-
-Confidence level (1-10)?
-Session difficulty: Too easy / About right / Too hard?"
-
----
-
-## START NOW
-
-Begin by asking the language/energy check, then detect user intent and enter appropriate mode.
-
-If user gives broad topic → Decompose first
-If user shows freeze signals → Recovery Mode immediately
-If user is fresh and focused → Proceed with protocol
-
-Remember: Understanding demonstrated, not claimed. Recovery is success, not failure.</div>
+"Spotify stores each song as numbers: [0.8 energy, 0.2 sad, 0.9 fast]. Another song is [0.7 energy, 0.3 sad, 0.85 fast]. Looking at these numbers, do you think Spotify sees them as similar or different?"
+
+APPLICATION GAP MODE (Studied but can't apply)
+Rule 1: Ask "Show me what you know about this"
+Rule 2: Find where it breaks - concept or application
+Rule 3: Give real situation, ask them to solve it
+
+RECOVERY (When Stuck)
+Not a separate mode. No announcement.
+When learner is stuck → just make the question simpler.
+If still struggling → go back one step, use simpler example.
+
+WHEN LEARNER ASKS "WHY?" OR "HOW?"
+Do NOT explain with words.
+Step 1: Show real situation
+Step 2: Show concrete example
+Step 3: Ask ONE question
+
+Example:
+Learner: "Why is NumPy faster than list?"
+WRONG: "NumPy is faster because it uses contiguous memory..."
+RIGHT: "You have 100,000 customer invoices. With list, computer checks one by one. With NumPy, computer grabs all at once. Which finishes faster?"
+
+SESSION END
+Do NOT ask confidence rating.
+Ask: "What did you learn today? Explain in your own words."
+Learner's summary shows real understanding.
+
+SESSION RETURN (Next Time)
+Do NOT summarize what was covered.
+Ask: "What do you remember from last session?"
+Learner explains → you see real retention.
+If gaps → fill them before continuing.
+
+FORMATTING EXCEPTIONS
+Use formatting ONLY for:
+- Code → use code block
+- Math formula → use proper notation
+- Visual concept → describe or use diagram
+Never use formatting for your responses, questions, or explanations.
+
+START NOW
+Begin by asking the language/energy check, then detect mode and proceed.</div>
             </div>
             
             <div class="card">
@@ -1095,448 +782,10 @@ Remember: Understanding demonstrated, not claimed. Recovery is success, not fail
             
         </div>
         
-        <!-- Tab 3: User Guide Tab (FULL VERSION) -->
-        <div class="tab-content" id="guide">
-            
-            <!-- What Is This -->
-            <div class="card">
-                <h2 class="card-title">WHAT IS THIS?</h2>
-                <p style="color: #d0d0d0; font-size: 14px; margin-bottom: 15px;">
-                    A way to learn with AI that makes sure you <strong style="color: #e94560;">really understand</strong>, not just feel like you understand.
-                </p>
-                
-                <p style="color: #ffffff; font-size: 14px; margin-bottom: 10px;"><strong>The difference:</strong></p>
-                
-                <table class="comparison-table">
-                    <tr>
-                        <th>Normal AI Chat</th>
-                        <th>This Protocol</th>
-                    </tr>
-                    <tr>
-                        <td>You ask → AI explains</td>
-                        <td>AI asks → You explain</td>
-                    </tr>
-                    <tr>
-                        <td>You read and nod</td>
-                        <td>You demonstrate and prove</td>
-                    </tr>
-                    <tr>
-                        <td>You think you understand</td>
-                        <td>You KNOW you understand</td>
-                    </tr>
-                    <tr>
-                        <td>You forget in a week</td>
-                        <td>You remember and can use it</td>
-                    </tr>
-                </table>
-            </div>
-            
-            <!-- Is This For You -->
-            <div class="card">
-                <h2 class="card-title">IS THIS FOR YOU?</h2>
-                
-                <div class="tip-box">
-                    <h4>✅ YES, if you:</h4>
-                    <p>• Want to actually USE what you learn (not just pass a test)</p>
-                    <p>• Are tired of forgetting everything</p>
-                    <p>• Read tutorials but can't apply them</p>
-                    <p>• Want real understanding, not surface knowledge</p>
-                    <p>• Have 30-60 minutes to learn properly</p>
-                    <p>• Are willing to think hard</p>
-                </div>
-                
-                <div class="warning-box">
-                    <h4>❌ NO, if you:</h4>
-                    <p>• Need to cram for an exam tonight</p>
-                    <p>• Just want quick answers</p>
-                    <p>• Don't plan to apply this knowledge</p>
-                    <p>• Have only 5 minutes</p>
-                    <p>• Don't want to struggle</p>
-                </div>
-                
-                <p style="color: #a0a0a0; font-size: 13px; text-align: center; margin-top: 15px;">
-                    <strong>Both choices are valid.</strong> This tool is for deep learning. Other tools are for quick answers.
-                </p>
-            </div>
-            
-            <!-- How It Works - 3 Rules -->
-            <div class="card">
-                <h2 class="card-title">HOW IT WORKS (3 RULES)</h2>
-                
-                <div class="guide-section">
-                    <h3>Rule 1: AI Asks, You Answer</h3>
-                    <p>The AI won't explain first. It will ask what YOU know.</p>
-                    <div class="example-box">Normal AI: "A vector is a list of numbers that..."
-
-This Protocol: "What do you already know about vectors? 
-               Where have you seen them?"</div>
-                    <p><strong style="color: #4ade80;">Why:</strong> When you explain, you find out what you really know.</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>Rule 2: Show, Don't Tell</h3>
-                    <p>Saying "I understand" is not enough. You must demonstrate.</p>
-                    <div class="example-box">You: "I understand vectors now"
-
-AI: "Good. Explain to me why a song can be 
-     represented as a vector. Use your own words."</div>
-                    <p><strong style="color: #4ade80;">Why:</strong> If you can't explain it simply, you don't really understand it.</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>Rule 3: Struggle Is Normal</h3>
-                    <p>Feeling stuck is part of learning. The AI will help, but won't give easy answers.</p>
-                    <div class="example-box">You: "I don't know how to answer that"
-
-AI: "That's okay. Let's make it smaller. 
-     Just tell me ONE thing you know about this."</div>
-                    <p><strong style="color: #4ade80;">Why:</strong> Working through difficulty builds real understanding.</p>
-                </div>
-            </div>
-            
-            <!-- Getting Started -->
-            <div class="card">
-                <h2 class="card-title">GETTING STARTED (5 MINUTES)</h2>
-                
-                <div class="guide-section">
-                    <h3>Step 1: Choose What to Learn</h3>
-                    <p>Pick ONE specific thing. Not "machine learning" but "what is a vector."</p>
-                    <p><span style="color: #f87171;">Too big:</span> "Teach me Python"</p>
-                    <p><span style="color: #4ade80;">Just right:</span> "How do I read a CSV file in Python?"</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>Step 2: Copy the Prompt</h3>
-                    <p>Click "Get Prompt" tab → Click "Copy" button</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>Step 3: Paste Into AI</h3>
-                    <p>Use any AI chatbot:</p>
-                    <ul>
-                        <li>Claude (recommended)</li>
-                        <li>ChatGPT</li>
-                        <li>Other AI</li>
-                    </ul>
-                    <p>Paste the entire prompt, then say what you want to learn.</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>Step 4: Answer Honestly</h3>
-                    <p>The AI will ask about:</p>
-                    <ul>
-                        <li>Your energy level (1-5)</li>
-                        <li>What you already know</li>
-                        <li>What you're trying to do</li>
-                    </ul>
-                    <p><strong style="color: #e94560;">Be honest.</strong> If you're tired, say so. If you know nothing, say so.</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>Step 5: Learn Through Questions</h3>
-                    <p>The AI will guide you with questions. Your job:</p>
-                    <ul>
-                        <li>Think before answering</li>
-                        <li>Use your own words</li>
-                        <li>Say when you're confused</li>
-                        <li>Don't pretend to understand</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- What to Expect -->
-            <div class="card">
-                <h2 class="card-title">WHAT TO EXPECT</h2>
-                
-                <div class="guide-section">
-                    <h3>The First 5 Minutes</h3>
-                    <p>AI will ask what you know. You might feel:</p>
-                    <ul>
-                        <li>"I don't know anything" → That's okay, say it</li>
-                        <li>"This is slow" → Yes, but it works</li>
-                        <li>"Just tell me the answer" → That's not how this works</li>
-                    </ul>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>The Middle</h3>
-                    <p>You'll work through the concept by:</p>
-                    <ul>
-                        <li>Connecting to things you already know</li>
-                        <li>Explaining in your own words</li>
-                        <li>Applying to simple examples</li>
-                        <li>Getting stuck and working through it</li>
-                    </ul>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>The End</h3>
-                    <p>You'll know you're done when you can:</p>
-                    <ul>
-                        <li>Explain the concept without help</li>
-                        <li>Apply it to a new situation</li>
-                        <li>Know what you still don't understand</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- If You Get Stuck -->
-            <div class="card">
-                <h2 class="card-title">IF YOU GET STUCK</h2>
-                
-                <div class="guide-section">
-                    <h3>"I don't understand the question"</h3>
-                    <p>Say: <em style="color: #4ade80;">"I don't understand what you're asking. Can you ask differently?"</em></p>
-                    <p>The AI will try another way.</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>"I don't know anything about this"</h3>
-                    <p>Say: <em style="color: #4ade80;">"I have no background in this. Start from zero."</em></p>
-                    <p>The AI will switch to Foundation Mode.</p>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>"My brain is tired"</h3>
-                    <p>Say: <em style="color: #4ade80;">"I'm tired. Can we stop or make this easier?"</em></p>
-                    <p>The AI will either:</p>
-                    <ul>
-                        <li>Simplify the questions</li>
-                        <li>Suggest stopping and continuing later</li>
-                    </ul>
-                </div>
-                
-                <div class="guide-section">
-                    <h3>"I'm frustrated"</h3>
-                    <p>This is normal. Say: <em style="color: #4ade80;">"I'm stuck and frustrated."</em></p>
-                    <p>The AI will help you find a smaller step forward.</p>
-                </div>
-            </div>
-            
-            <!-- Your Rights -->
-            <div class="card">
-                <h2 class="card-title">YOUR RIGHTS AS A LEARNER</h2>
-                <p style="color: #a0a0a0; font-size: 13px; text-align: center; margin-bottom: 15px;">You can ALWAYS:</p>
-                
-                <div class="rights-item">
-                    <div class="rights-number">1</div>
-                    <div class="rights-text"><strong>Say "I don't know"</strong> — Honesty is required</div>
-                </div>
-                
-                <div class="rights-item">
-                    <div class="rights-number">2</div>
-                    <div class="rights-text"><strong>Ask for simpler questions</strong> — No shame in this</div>
-                </div>
-                
-                <div class="rights-item">
-                    <div class="rights-number">3</div>
-                    <div class="rights-text"><strong>Use your native language</strong> — If English is hard, switch</div>
-                </div>
-                
-                <div class="rights-item">
-                    <div class="rights-number">4</div>
-                    <div class="rights-text"><strong>Take a break</strong> — Tired brain doesn't learn</div>
-                </div>
-                
-                <div class="rights-item">
-                    <div class="rights-number">5</div>
-                    <div class="rights-text"><strong>Challenge the AI</strong> — If something seems wrong, say so</div>
-                </div>
-                
-                <div class="rights-item">
-                    <div class="rights-number">6</div>
-                    <div class="rights-text"><strong>Stop the session</strong> — You're in control</div>
-                </div>
-            </div>
-            
-            <!-- Tips for Success -->
-            <div class="card">
-                <h2 class="card-title">TIPS FOR SUCCESS</h2>
-                
-                <div class="tip-box">
-                    <h4>✓ Before the Session</h4>
-                    <p>• Have 30-60 minutes</p>
-                    <p>• Energy level 3+ (not exhausted)</p>
-                    <p>• One specific topic in mind</p>
-                    <p>• Quiet place to think</p>
-                </div>
-                
-                <div class="tip-box">
-                    <h4>✓ During the Session</h4>
-                    <p>• Think before answering</p>
-                    <p>• Use your own words, not textbook words</p>
-                    <p>• Draw or write if it helps</p>
-                    <p>• Say when confused</p>
-                    <p>• Don't rush</p>
-                </div>
-                
-                <div class="tip-box">
-                    <h4>✓ After the Session</h4>
-                    <p>• Write down what you learned (1-2 sentences)</p>
-                    <p>• Note what's still unclear</p>
-                    <p>• Test yourself tomorrow (do you still remember?)</p>
-                </div>
-            </div>
-            
-            <!-- Example Session -->
-            <div class="card">
-                <h2 class="card-title">EXAMPLE SESSION</h2>
-                <p style="color: #a0a0a0; font-size: 13px; margin-bottom: 15px;">Here's what a real session looks like:</p>
-                
-                <div class="example-box">YOU: I want to learn what a vector is. I have 30 minutes. 
-     Energy is 4.
-
-AI:  Before I explain anything - where have you seen 
-     the word "vector" before?
-
-YOU: I've seen it in math class but I don't remember. 
-     And in programming sometimes.
-
-AI:  Okay. Let me ask differently. 
-     You use Google Maps. When you search for 
-     "restaurants near me," how does the app know 
-     which restaurants are close to you?
-
-YOU: It knows my location and the restaurant locations?
-
-AI:  Right. And how does a computer store a location?
-
-YOU: Maybe like... coordinates? Like numbers?
-
-AI:  Exactly. A location is stored as two numbers: 
-     [latitude, longitude]. Like [24.7136, 46.6753].
-     
-     This list of numbers IS a vector.
-     
-     In your own words - what is a vector?
-
-YOU: A vector is a list of numbers that represents 
-     something, like a location.
-
-AI:  Good. Now - if locations are vectors, how might 
-     the computer find which restaurant is closest?
-
-YOU: Compare the numbers somehow?
-
-AI:  How would you compare them? If you're at [24.7, 46.6] 
-     and Restaurant A is at [24.8, 46.6] and Restaurant B 
-     is at [25.0, 47.0], which is closer?
-
-YOU: A, because the numbers are closer to mine.
-
-AI:  Exactly. You just discovered how similarity works 
-     with vectors. Small difference in numbers = similar.
-     
-     What's one thing you now understand that you 
-     didn't before?
-
-YOU: That vectors are just lists of numbers, and similar 
-     things have similar numbers.
-
-AI:  Confidence level 1-10?
-
-YOU: 8. I get the basic idea but I'd need practice.
-
-AI:  That's honest and accurate. Good session.</div>
-            </div>
-            
-            <!-- Troubleshooting -->
-            <div class="card">
-                <h2 class="card-title">TROUBLESHOOTING</h2>
-                
-                <div class="troubleshoot-row">
-                    <div class="troubleshoot-problem">AI just explains instead of asking</div>
-                    <div class="troubleshoot-solution">Say: "Please ask me questions, don't explain"</div>
-                </div>
-                
-                <div class="troubleshoot-row">
-                    <div class="troubleshoot-problem">Questions are too hard</div>
-                    <div class="troubleshoot-solution">Say: "This is too hard. Can you start simpler?"</div>
-                </div>
-                
-                <div class="troubleshoot-row">
-                    <div class="troubleshoot-problem">I keep saying "I don't know"</div>
-                    <div class="troubleshoot-solution">That's okay. AI will find what you DO know</div>
-                </div>
-                
-                <div class="troubleshoot-row">
-                    <div class="troubleshoot-problem">Session feels too slow</div>
-                    <div class="troubleshoot-solution">This is normal. Deep learning takes time</div>
-                </div>
-                
-                <div class="troubleshoot-row">
-                    <div class="troubleshoot-problem">I'm not sure if I understand</div>
-                    <div class="troubleshoot-solution">Ask AI: "Can you test me on this?"</div>
-                </div>
-                
-                <div class="troubleshoot-row">
-                    <div class="troubleshoot-problem">AI accepted my answer but I'm not sure</div>
-                    <div class="troubleshoot-solution">Say: "I'm not confident. Can you verify my understanding?"</div>
-                </div>
-            </div>
-            
-            <!-- After Using This Protocol -->
-            <div class="card">
-                <h2 class="card-title">AFTER USING THIS PROTOCOL</h2>
-                
-                <div class="tip-box">
-                    <h4>You Should Be Able To:</h4>
-                    <p>• Explain the concept in your own words</p>
-                    <p>• Apply it to a situation you haven't seen before</p>
-                    <p>• Know exactly what you still don't understand</p>
-                    <p>• Remember it days later without re-reading</p>
-                </div>
-                
-                <div class="warning-box">
-                    <h4>If You Can't Do These Things:</h4>
-                    <p>The session wasn't complete. Either:</p>
-                    <p>• Continue in another session</p>
-                    <p>• Ask AI to verify your understanding more</p>
-                    <p>• Practice applying the concept</p>
-                </div>
-            </div>
-            
-            <!-- Quick Start Checklist -->
-            <div class="card">
-                <h2 class="card-title">QUICK START CHECKLIST</h2>
-                
-                <div class="checklist-item">Pick ONE specific topic</div>
-                <div class="checklist-item">Copy the prompt (Get Prompt tab → Copy button)</div>
-                <div class="checklist-item">Paste into AI (Claude or ChatGPT)</div>
-                <div class="checklist-item">Tell AI your energy level and time available</div>
-                <div class="checklist-item">Answer questions honestly</div>
-                <div class="checklist-item">Use your own words</div>
-                <div class="checklist-item">Say when confused</div>
-                <div class="checklist-item">At end: explain what you learned</div>
-            </div>
-            
-            <!-- Final Note -->
-            <div class="warning-box">
-                <h4>💪 ONE FINAL THING</h4>
-                <p><strong>This protocol is harder than normal AI chat.</strong></p>
-                <p style="margin-top: 10px;">That's the point.</p>
-                <p style="margin-top: 10px;">Easy learning → Easy forgetting</p>
-                <p>Hard learning → Real understanding</p>
-                <p style="margin-top: 15px; color: #f87171; font-size: 15px;"><strong>If it feels like work, it's working.</strong></p>
-            </div>
-            
-            <!-- Questions -->
-            <div class="card">
-                <h2 class="card-title">QUESTIONS?</h2>
-                <p style="color: #d0d0d0; font-size: 14px; text-align: center;">
-                    If something in this guide is unclear, the protocol itself will help you understand it. Just paste the prompt and ask:
-                </p>
-                <p style="color: #4ade80; font-size: 14px; text-align: center; margin-top: 10px; font-style: italic;">
-                    "I'm trying to understand how to use this learning protocol. Can you help me?"
-                </p>
-            </div>
-            
-        </div>
-        
         <!-- Footer -->
         <div class="footer">
             <p>Created by <strong>Haifa Alsubhi</strong></p>
-            <p>Need help? <a href="mailto:haifa.at.al@gmail.com">haifa.at.al@gmail.com</a></p>
+            <p>Protocol v3.0</p>
         </div>
         
     </div>
@@ -1544,7 +793,6 @@ AI:  That's honest and accurate. Good session.</div>
     <script>
         // Tab switching
         function showTab(tabName) {
-            // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
@@ -1552,7 +800,6 @@ AI:  That's honest and accurate. Good session.</div>
                 btn.classList.remove('active');
             });
             
-            // Show selected tab
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
         }
