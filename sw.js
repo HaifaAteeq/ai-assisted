@@ -1,4 +1,4 @@
-const CACHE_NAME = 'deep-learn-v1';
+const CACHE_NAME = 'deep-learn-v3';
 const urlsToCache = [
   '/',
   '/index.html',
